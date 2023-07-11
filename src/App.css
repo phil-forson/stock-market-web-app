@@ -7,7 +7,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 50px 200px;
+  grid-template-rows: 1fr 200px 250px;
   padding: 30px 30px;
   gap: 20px;
 }
@@ -23,6 +23,20 @@
 .indicators {
   grid-row: 2/4;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #eee
+
+}
+
 
 @media only screen and (max-width: 600px) {
   .grid-container {

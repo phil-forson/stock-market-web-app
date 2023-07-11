@@ -106,7 +106,7 @@ const IndicatorsSection = () => {
         options={options}
         series={seriesData}
         type="line"
-        height={200}
+        height={400}
       />
     </div>
   );

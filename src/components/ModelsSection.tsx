@@ -360,7 +360,7 @@ const ModelsSection = () => {
       },
     },
     title: {
-      text: "Forecast",
+      text: "Highs And Lows",
       style: { fontSize: "15" , fontWeight: '600', fontFamily: 'inherit'},
       align: "left",
     },
@@ -389,13 +389,13 @@ const ModelsSection = () => {
           options={chartOptions1}
           series={seriesData}
           type="line"
-          height={300}
+          height={380}
         />
         <ReactApexChart
           options={chartOptions2}
           series={seriesData2}
           type="line"
-          height={300}
+          height={380}
         />
       </div>
     </div>
