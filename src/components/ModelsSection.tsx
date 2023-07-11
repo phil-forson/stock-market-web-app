@@ -1,12 +1,10 @@
 import { ApexOptions } from "apexcharts";
+import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import dayjs from "dayjs";
-import "../App.css";
 
-function CandleStickChart() {
-  const series = [
+const ModelsSection = () => {
+  const [seriesData, setSeriesData] = useState([
     {
-      name: "candle",
       data: [
         {
           x: new Date(1538778600000),
@@ -250,55 +248,158 @@ function CandleStickChart() {
         },
       ],
     },
-  ];
+  ]);
 
-  const options: ApexOptions = {
+  const chartOptions1: ApexOptions = {
     chart: {
-      height: 550,
-      width: 100,
-      type: "candlestick",
-      toolbar: {
-        show: false,
+      type: "area",
+      stacked: false,
+      height: 350,
+      zoom: {
+        type: "x",
+        enabled: true,
+        autoScaleYaxis: true,
       },
+      toolbar: {
+        show: false
+      }
     },
-    grid: {
-      strokeDashArray: 2000,
+    dataLabels: {
+      enabled: false,
+    },
+    markers: {
+      size: 0,
     },
     title: {
-      text: "CandleStick Chart Of BTCUSD",
-      style: { fontSize: "20", fontWeight: "600", fontFamily: "inherit" },
+      text: "Stock Price Movement",
+      style: { fontSize: "15" , fontWeight: '600', fontFamily: 'inherit'},
       align: "left",
     },
-    tooltip: {
-      enabled: true,
-      cssClass: "apex-tooltip",
-    },
-    xaxis: {
-      type: "category",
-      labels: {
-        formatter: function (val: any) {
-          return dayjs(val).format("MMM DD HH:mm");
-        },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shadeIntensity: 1,
+        inverseColors: false,
+        opacityFrom: 0.5,
+        opacityTo: 0,
+        stops: [0, 90, 100],
       },
     },
     yaxis: {
-      tooltip: {
-        enabled: true,
+      labels: {
+        formatter: function (val) {
+          return (val / 1000000).toFixed(0);
+        },
+      },
+      title: {
+        text: "Price",
+      },
+    },
+    xaxis: {
+      type: "datetime",
+    },
+    tooltip: {
+      shared: false,
+      y: {
+        formatter: function (val) {
+          return (val / 1000000).toFixed(0);
+        },
       },
     },
   };
-  return (
-    <div id="chart" className="bg-white p-5 rounded-[15px] candlestick-chart">
-      <div className="text-[20px] text-center font-bold">BTCUSD Chart</div>
 
-      <ReactApexChart
-        options={options}
-        series={series}
-        type="candlestick"
-        height={550}
-      />
+  const [seriesData2, setSeriesData2] = useState([
+    {
+      name: "Sales",
+      data: [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5],
+    },
+  ]);
+
+  const chartOptions2: ApexOptions = {
+    chart: {
+      height: 350,
+      type: "line",
+      toolbar: {
+        show: false
+      }
+    },
+    forecastDataPoints: {
+      count: 7,
+    },
+    stroke: {
+      width: 5,
+      curve: "smooth",
+    },
+    xaxis: {
+      type: "datetime",
+      categories: [
+        "1/11/2000",
+        "2/11/2000",
+        "3/11/2000",
+        "4/11/2000",
+        "5/11/2000",
+        "6/11/2000",
+        "7/11/2000",
+        "8/11/2000",
+        "9/11/2000",
+        "10/11/2000",
+        "11/11/2000",
+        "12/11/2000",
+        "1/11/2001",
+        "2/11/2001",
+        "3/11/2001",
+        "4/11/2001",
+        "5/11/2001",
+        "6/11/2001",
+      ],
+      tickAmount: 10,
+      labels: {
+        formatter: function (value: any, timestamp: any, opts: any) {
+          return opts.dateFormatter(new Date(timestamp), "dd MMM");
+        },
+      },
+    },
+    title: {
+      text: "Forecast",
+      style: { fontSize: "15" , fontWeight: '600', fontFamily: 'inherit'},
+      align: "left",
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shade: "dark",
+        gradientToColors: ["#FDD835"],
+        shadeIntensity: 1,
+        type: "horizontal",
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [0, 100, 100, 100],
+      },
+    },
+    yaxis: {
+      min: -10,
+      max: 40,
+    },
+  };
+  return (
+    <div className="bg-white p-5 rounded-[15px] models">
+      <div className="text-[20px] text-center font-bold">Models</div>
+      <div id="chart">
+        <ReactApexChart
+          options={chartOptions1}
+          series={seriesData}
+          type="line"
+          height={300}
+        />
+        <ReactApexChart
+          options={chartOptions2}
+          series={seriesData2}
+          type="line"
+          height={300}
+        />
+      </div>
     </div>
   );
-}
+};
 
-export default CandleStickChart;
+export default ModelsSection;
