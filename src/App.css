@@ -38,8 +38,24 @@ td {
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .grid-container {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto ;
+  }
+  .candlestick-chart {
+    grid-row: 1;
+  }
+  
+  .models {
+    grid-row: 2;
+  }
+  
+  .indicators {
+    grid-row: 3;
+  }
+
+  table td {
+    font-size: 5
   }
 }
