@@ -1,14 +1,16 @@
-import CandleStickChart from "./components/CandleStickChart";
-import './App.css'
-import ModelsSection from "./components/ModelsSection";
-import IndicatorsSection from "./components/IndicatorsSection";
+import "./App.css";
+import LandingPage from "./views/LandingPage";
 import ModelsPage from "./views/ModelsPage";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <ModelsPage />
-    </>
+    <Router>
+      <Routes>
+        <Route Component={LandingPage} path="/" />
+        <Route Component={ModelsPage} path="/models" />
+      </Routes>
+    </Router>
   );
 }
 

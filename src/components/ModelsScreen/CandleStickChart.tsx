@@ -1,7 +1,7 @@
 import { ApexOptions } from "apexcharts";
 import ReactApexChart from "react-apexcharts";
 import dayjs from "dayjs";
-import "../App.css";
+import "../../App.css";
 
 function CandleStickChart() {
   const series = [
@@ -286,6 +286,9 @@ function CandleStickChart() {
         enabled: true,
       },
     },
+    annotations: {
+      
+    }
   };
   return (
     <div id="chart" className="bg-white p-5 rounded-[15px] candlestick-chart">
