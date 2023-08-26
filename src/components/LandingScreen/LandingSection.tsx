@@ -2,23 +2,13 @@ import "./Landing.css";
 import { useEffect, useState, useRef } from "react";
 import AI from "../../assets/images/vision1.jpg";
 import Typed from "typed.js";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-
 
 const LandingSection = () => {
   const el = useRef(null);
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ["Predictions", "Highs And Lows"],
+      strings: ["Closing Price", "Highs &amp; Lows", "Structures &amp; Channels"],
       typeSpeed: 100,
       loop: true,
       backSpeed: 100,
@@ -52,7 +42,7 @@ const LandingSection = () => {
               </li>
             </ul>
           </div> */}
-          <div className="flex">
+          <div className="flex mt-5">
             <span className="pr-10 text-4xl">Models </span>
             <span ref={el} className="text-4xl font-bold" />
           </div>
@@ -60,14 +50,23 @@ const LandingSection = () => {
       </div>
       {/* <div className="hero-section "><img src={AI}/></div> */}
       <div className="relative w-full flex flex-1">
-        <div>
-          <img src={AI} className="w-full pl-10" />
-        </div>
-        <div className="hero-svg">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" className="shape-fill"></path>
-    </svg>
-          <div></div>
+        <div className="relative">
+          <div className="hero-svg">
+            <svg
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z"
+                className="shape-fill"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <img src={AI} className="w-full pl-10" />
+          </div>
         </div>
       </div>
     </section>
